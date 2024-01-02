@@ -3,16 +3,17 @@ import argparse
 import subprocess
 import glob
 import sys
+from security import safe_command
 
 try:
     import pathlib
 
 except ImportError:
     if os.name == 'nt':
-        subprocess.call(['python', '-m', 'pip', 'install', 'pathlib'])
+        safe_command.run(subprocess.call, ['python', '-m', 'pip', 'install', 'pathlib'])
         import pathlib
     else: # linux
-        subprocess.call(['pip', 'install', 'pathlib'])
+        safe_command.run(subprocess.call, ['pip', 'install', 'pathlib'])
         import pathlib
         
 if sys.version_info.major == 2:
