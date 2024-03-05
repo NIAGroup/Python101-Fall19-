@@ -18,23 +18,23 @@ def filter_routes():
                 if ovwrite == 'y':  # else just exit program
                     newFile = open(output_file, 'w')
                     symb = raw_input('Enter airport symbol: ')
-                    line = ofile.readline()  # get the first line in the file
+                    line = ofile.readline(5_000_000)  # get the first line in the file
                     while line != '':  # read until no more lines to be read
                         split_lines = line.split(',')  # returns line in a list without the commas
                         if symb.upper() in split_lines:  # check if symbol.upper() e.g. SMF is in the list split_lines
                             newFile.write(line)  # write the line to the output file
-                        line = ofile.readline()  # get the next line in the file
+                        line = ofile.readline(5_000_000)  # get the next line in the file
                     ofile.close()
                     newFile.close()
             else:
                 newFile = open(output_file, 'w')  # open the file for writing
                 symb = raw_input('Enter airport symbol: ')
-                line = ofile.readline()  # get the first line in the file
+                line = ofile.readline(5_000_000)  # get the first line in the file
                 while line != '':   # read until no more lines to be read
                     split_lines = line.split(',')   # returns line in a list without the commas
                     if symb.upper() in split_lines:  # check if symbol.upper() e.g. SMF is in the list split_lines
                         newFile.write(line)     # write the line to the output file
-                    line = ofile.readline()  # get the next line in the file
+                    line = ofile.readline(5_000_000)  # get the next line in the file
                 ofile.close()
                 newFile.close()
             print('Finished')
